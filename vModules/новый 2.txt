@@ -1,0 +1,17 @@
+	wire [3:0] r_name;
+	wire [31:0] cpu_c;
+	wire [31:0] c_cpu;
+	wire [16:0] c_r;
+	wire [16:0] r_c;
+	converter converter(
+		.clk(clk),
+		.rst(!rst_n),
+		.f_c(cpu_c),
+		.to_r(c_r),
+		.f_r(r_c),
+		.to_c(c_cpu),
+		.r_name(r_name)
+	);
+	sm_cpu sm_cpu_10 (.clk(clk), .rst_n(rst_n), .inject(c_cpu), eject(cpu_c), .router_name(r_name));
+
+	apo_router_9_nodes r10 (.clk(clk), .rst_n(rst_n), .router_name(4'b1001), .in_free(c_r), .in_r1R(r_minL[1]), .in_r2R(r_maxL[2]), .in_r1L(r_minR[7]), .in_r2L(r_maxR[6]), .out_r1R(r_minR[9]), .out_r2R(r_maxR[9]), .out_r1L(r_minL)9]), .out_r2L(r_maxL)9]), .out_data(r_c));
